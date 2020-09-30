@@ -9,9 +9,10 @@ pg_ctl reload -D "C:\Program Files\PostgreSQL\11\data"
 
 -- Databases:
 -- Répertoire base qui contient 1 répertoire par base :
-select oid, * from pg_database order by oid;
+select oid, * from pg_database order by oid; -- oid is directory name
 select oid,* from pg_class where relnamespace = (select oid from pg_namespace where nspname = 'movie')
 order by reltype;
+-- for table/index/sequence : relfilenode is filename (equals oid at first but can change later with vacuum full)
 
 -- Tablespaces
 create tablespace tb_planes location 'C:\D\Postgresql\11\data_planes';
